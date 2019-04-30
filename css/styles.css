@@ -1,3 +1,26 @@
 *{
   padding: 0;
 }
+
+.nav{
+  background-color: yellow;
+}
+
+
+.banner {
+  background-color: green;
+  width: 100%;
+  height: 100vh;
+}
+
+.producto {
+  background-color:red;
+  width: 100%;
+  height: 100vh;
+}
+
+.coleccion{
+  width: 100%;
+  height: 100vh;
+  background-color: blue;
+}
