@@ -18,7 +18,7 @@
 <section class="about">
   <div class="row">
     <div class="col-12">
-     <h2 class="titulo">About us</h2>
+     <h2 class="titulo-division">About us</h2>
     </div>
     <div class="col-12 col-md-6">
       <article class="fondo-parrafo">
@@ -52,7 +52,7 @@
       <section class="sucursales">
         <div class="row">
           <div class="col-12">
-           <h2 class="titulo">Nuestras sucursales</h2>
+           <h2 class="titulo-division">Nuestras sucursales</h2>
           </div>
           <div class="col-12 col-md-6">
             <article class="google-maps">
@@ -69,29 +69,6 @@
           </div>
         </div>
         </section>
-    </div>
-
-
-
-    <!-- Modal Carrito -->
-    <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Carrito vacío
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- modal: lo pense para viewports grandes, para celular solo usar slide  -->

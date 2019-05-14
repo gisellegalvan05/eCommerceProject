@@ -8,14 +8,14 @@
           <img class="img-banner" src="imgs/eCommerce/banner/eCommerce32.png" alt="First slide">
         </div>
         </div>
-          </div>
+
         <div class="carousel-item">
             <div class="imagen-container">
           <img class="img-banner" src="imgs/eCommerce/banner/eCommerce33.png" alt="Third slide">
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
+ </div>
 </div>
 </section>

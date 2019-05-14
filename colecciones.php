@@ -13,7 +13,7 @@
 <body>
 <section class="division">
   <div class="col-12">
-    <h2 class="titulo">Colecciónes</h2>
+    <h2 class="titulo-division">Colecciónes</h2>
   </div>
 </section>
 <div class="container">

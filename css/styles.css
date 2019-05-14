@@ -14,7 +14,7 @@
     font-family: 'Montserrat', sans-serif;
     width: 100% !important;
   }
- nav.navbar{
+  nav.navbar{
    background-color: rgba(0, 0, 0, 0.5)!important;
  }
   section.about, section.sucursales{
@@ -22,11 +22,10 @@
     padding-left:5%;
     padding-right:5%;
 
-
    }
 
 
-  .titulo{
+  .titulo-division{
    text-align: center;
    text-transform: uppercase;
    margin-bottom: 30px;
@@ -73,9 +72,7 @@
       object-fit: cover;
       display:block;
       height:48vh;
-      width:100%
-
-
+      width:100%;
 
   }
 
@@ -121,7 +118,9 @@
   .coleccion {
     margin-bottom: 10px;
   }
-
+  .producto {
+    margin-bottom: 10px;
+  }
   section.productos {
     margin-bottom:40px;
   }
