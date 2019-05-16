@@ -7,73 +7,62 @@
     box-sizing: border-box;
   }
 
-
   body {
-    background-color: #fff;
+background-image: url('../imgs/wool.png');
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     width: 100% !important;
   }
+
   nav.navbar{
    background-color: rgba(0, 0, 0, 0.5)!important;
  }
-  section.about, section.sucursales{
 
+  section.about, section.sucursales{
     padding-left:5%;
     padding-right:5%;
-
    }
-
 
   .titulo-division{
    text-align: center;
    text-transform: uppercase;
    margin-bottom: 30px;
    margin-top: 30px;
+   color:#fff;
   }
 
-  section.division {
-    background-color:rgba(0,0,0,0.9);
-    padding: 5px;
-    color:#fff;
-
-  }
 
   .google-maps {
         position: relative;
         padding-bottom: 75%;
         height: 0;
         overflow: hidden;
-
     }
+
     .google-maps iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100% !important;
         height: 80% !important;
-
-
     }
 
    .fondo-parrafo{
-    background-color: rgba(093,155,155,0.7);
+    background-color: rgba(0,255,229,0.7);
     border-radius: 10px;
     color:#fff;
     padding: 5%;
-
     }
 
- article.about-us-slide div.carousel div.carousel-inner div.carousel-item img{
-   border-radius: 3%;
- }
+   article.about-us-slide div.carousel div.carousel-inner div.carousel-item img{
+     border-radius: 3%;
+   }
 
   .img-firstCarousel{
       object-fit: cover;
       display:block;
-      height:48vh;
+      height:293px;
       width:100%;
-
   }
 
   .img-banner {
@@ -84,122 +73,9 @@
     height: 100vh;
   }
 
-  .relative {
-    position: relative;
-  }
+  .contacto-container{
 
-  .collection-title {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #0000004a;
-    z-index: 20;
-    margin-right: 15px;
-  }
-
-  .collection-title h2 {
-    top: 40%;
-    display: -webkit-inline-box;
-    position: absolute;
-    width: 100%;
-    text-align: -webkit-center;
-    color: #fff;
-  }
-
-  .collection-title h5 {
-    top: 55%;
-    display: -webkit-inline-box;
-    position: absolute;
-    width: 100%;
-    text-align: -webkit-center;
-    color: #fff;
-  }
-
-  .coleccion {
-    margin-bottom: 10px;
-  }
-  .producto {
-    margin-bottom: 10px;
-  }
-  section.productos {
-    margin-bottom:40px;
-  }
-
-  .login-container {
-    background-color: #5a5a5a;
     padding: 15px 45px;
-  }
-
-  .center {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .lightbox-content .lightbox-inner {
-    padding: 30px 20px;
-  }
-
-  .lightbox-content .row:not(.row-collapse) {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: -15px;
-    margin-right: -15px;
-    width: auto;
-  }
-
-  .h3, h3 {
-    font-size: 1.75rem;
-  }
-
-  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: .5rem;
-  }
-
-  .uppercase {
-    text-transform: uppercase;
-  }
-
-  .pb-0 {
-    padding-bottom: 0 !important;
-  }
-
-  p.form-row-wide {
-    clear: both;
-  }
-
-  form p {
-    margin-bottom: .5em;
-  }
-
-  p {
-    margin-top: 0;
-  }
-
-  .input-text {
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    padding: 0 .75em;
-    height: 2.507em;
-    font-size: .97em;
-    border-radius: 0;
-    max-width: 100%;
-    width: 100%;
-    vertical-align: middle;
-    background-color: #fff;
-    color: #333;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    transition: color .3s, border .3s, background .3s, opacity .3s;
-  }
-
-  .inline {
-    display: inline;
   }
 
   label {
@@ -212,12 +88,6 @@
     font-size: .9em;
     margin-bottom: 0.4em;
   }
-
-  .account-login-inner .uppercase,
-  .account-register-inner .uppercase {
-    color: white;
-  }
-
   .btnLogin {
     background-color: #00ffe5 !important;
     position: relative;
@@ -247,10 +117,6 @@
     box-sizing: border-box;
   }
 
-  .lostPassword a {
-    color: #00ffe5 !important;
-  }
-}
 
 @media only screen and (min-device-width : 481px) and (max-device-width : 768px) {}
 

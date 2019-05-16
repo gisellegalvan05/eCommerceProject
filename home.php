@@ -63,7 +63,7 @@
             <article class="fondo-parrafo">
               <h2>Sucursales</h2>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
             </article>
           </div>
@@ -105,44 +105,36 @@
       </div>
     </div>
 
-    <div class="row login-container">
-      <section id="login" class="center">
-        <div class="lightbox-inner">
-          <div class="row" id="customer_login">
-            <div class="col-12 col-lg-6 col pb-0 center">
-              <div class="account-login-inner">
-                <h3 class="uppercase">Login</h3>
-                <form class="" method="post">
-                  <p class="form-row form-row-wide"> <label for="username">Nombre de usuario o email&nbsp;<span class="required">*</span></label> <input type="text" class="input-text" name="username" id="username" autocomplete="username" value="">
-                  </p>
-                  <p class="form-row form-row-wide"> <label for="password">Contraseña&nbsp;<span class="required">*</span></label> <input class="input-text" type="password" name="password" id="password" autocomplete="current-password"></p>
-                  <p class="form-row">
-                    <button type="submit" class="btnLogin" name="login" value="Log in">Log in</button>
-                    <label class="">
-                      <input class="" name="rememberme" type="checkbox" id="rememberme" value="forever"> <span>Recordarme</span>
-                    </label>
-                  </p>
-                  <p class="lostPassword"> <a href="#">Olvidé mi contraseña</a></p>
-                </form>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6 col pb-0 center">
-              <div class="account-register-inner">
-                <h3 class="uppercase">Registrarme</h3>
-                <form method="post" class="">
-                  <p class="form-row form-row-wide"> <label for="reg_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
-                      class="input-text" name="email" id="reg_email" autocomplete="email" value=""></p>
-                  <p class="form-row form-row-wide"> <label for="reg_password">Contraseña&nbsp;<span class="required">*</span></label> <input type="password"
-                      class="input-text" name="password" id="reg_password" autocomplete="new-password"></p>
-                  <div class="privacy-policy-text"></div>
-                  <p class="form-row"><button type="submit" class="btnLogin" name="register" value="Register">Registrarme</button></p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+ <footer>
+   <div class="contacto-container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="titulo-division footer-tit">Contacto</h2>
+    </div>
+  </div>
+  <div class="container">
+<form>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-12 col-md-3">
+      <label for="name">Nombre</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Ingresá tu nombre">
+    </div>
+      <div class="form-group col-12 col-md-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Ingresá tu email">
+      </div>
+  </div>
+  <div class="form-row justify-content-center">
+    <div class="form-group col-12 col-md-6">
+    <label for="comentarios">Dejanos un comentario</label>
+   <textarea class="form-control" id="comentarios"  name="coments" rows="5"></textarea>
+  </div>
+ </div>
+    <p class="form-row justify-content-center "><button type="submit" class="btnLogin" name="submit" value="Submit">Enviar</button></p>
+</form>
+</div>
+    </div>
+ </footer>
 
 
 
