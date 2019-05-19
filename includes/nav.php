@@ -1,6 +1,6 @@
 <header>
   <nav  class="navbar  fixed-top navbar-expand-lg  navbar-dark">
-    <a class="navbar-brand" href="home.php"><img src="imgs/logotipo2.png" width="50" height="50" alt="">
+    <a class="navbar-brand" href="home.php"><img src="imgs/logotipo4.png" width="50" height="50" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

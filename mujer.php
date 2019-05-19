@@ -24,11 +24,11 @@
             <h2>Otoño/Invierno</h2>
             <h5>Mujer</h5>
           </div>
-        <img src="imgs/eCommerce/mujer/eCommerce2.png" alt="" class="w-100" /></a>
+        <img src="imgs/eCommerce/mujer/eCommerce2.png" alt="" class="w-100" />
         </div>
+        </a>
       </article>
     </div>
-
     <div class="col-12 col-md-6">
       <article class="coleccion">
         <a title="Mujer" href="" data-toggle="modal" data-target="#myModal2">

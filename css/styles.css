@@ -34,7 +34,7 @@ background-image: url('../imgs/wool.png');
 
   .google-maps {
         position: relative;
-        padding-bottom: 75%;
+        padding-bottom: 60%;
         height: 0;
         overflow: hidden;
     }
@@ -44,7 +44,7 @@ background-image: url('../imgs/wool.png');
         top: 0;
         left: 0;
         width: 100% !important;
-        height: 80% !important;
+        height: 100% !important;
     }
 
    .fondo-parrafo{

@@ -5,13 +5,12 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="imagen-container">
-          <img class="img-banner" src="imgs/eCommerce/banner/eCommerce32.png" alt="First slide">
+          <img class="img-banner" src="imgs/eCommerce/banner/banner3.png" alt="First slide">
         </div>
         </div>
-
         <div class="carousel-item">
             <div class="imagen-container">
-          <img class="img-banner" src="imgs/eCommerce/banner/eCommerce33.png" alt="Third slide">
+          <img class="img-banner" src="imgs/eCommerce/banner/banner4.png" alt="Third slide">
           </div>
         </div>
       </div>

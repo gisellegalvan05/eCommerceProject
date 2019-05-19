@@ -22,13 +22,14 @@
         <div class="col-12 col-md-4">
           <article class="producto">
               <a title="Mujer" href="mujer.php">
-            <div class="imagen-container relative">
+              <div class="imagen-container relative">
               <div class="collection-title">
                 <h2>Mujer</h2>
                 <h5>Ver más</h5>
               </div>
-              <img src="imgs/eCommerce/mujer/eCommerce1.png" alt=""  class="w-100"/></a>
+              <img src="imgs/eCommerce/mujer/eCommerce1.png" alt=""  class="w-100"/>
             </div>
+            </a>
           </article>
         </div>
         <div class="col-12 col-md-4">

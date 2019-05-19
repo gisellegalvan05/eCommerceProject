@@ -33,13 +33,10 @@
         <div id="carouselExampleControls3" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img   class="img-firstCarousel" class="d-block w-100" src="imgs/eCommerce/banner/local.png" alt="First slide">
+              <img   class="img-firstCarousel" class="d-block w-100" src="imgs/eCommerce/banner/banner2.png" alt="First slide">
             </div>
             <div class="carousel-item">
               <img  class="img-firstCarousel" class="d-block w-100" src="imgs/eCommerce/banner/local1.png" alt="Second slide">
-            </div>
-            <div class="carousel-item">
-              <img  class="img-firstCarousel" class="d-block w-100" src="imgs/eCommerce/banner/local3.png" alt="Second slide">
             </div>
           </div>
         </div>

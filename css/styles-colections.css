@@ -35,6 +35,7 @@ nav.navbar{
   margin-right: 15px;
 }
 
+
 .collection-title h2 {
   top: 40%;
   display: -webkit-inline-box;
@@ -42,6 +43,13 @@ nav.navbar{
   width: 100%;
   text-align: -webkit-center;
   color: #fff;
+}
+
+.collection-title h2:hover {
+  color: black;
+}
+.collection-title h5:hover {
+  color: black;
 }
 
 .collection-title h5 {
