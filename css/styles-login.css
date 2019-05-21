@@ -149,3 +149,7 @@ label, legend {
   margin-top:100px;
   margin-bottom:100px;
 }
+
+.width100{
+  width: 100%;
+}
