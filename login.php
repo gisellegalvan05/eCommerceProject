@@ -127,6 +127,7 @@ if(!empty($_POST)){
             <!-- FOMULARIO CONFIRMAR CONTRASEÑA -->
             <p class="form-row form-row-wide"> <label for="reg_passwordConfirm">Confirmar Contraseña&nbsp;<span class="required">*</span></label> <input type="password"
                 class="input-text" name="passwordConfirm" id="reg_passwordConfirm" autocomplete="passwordConfirm"></p>
+                  <p><?=$errors['passwordConfirm'][0] ?? ''?></p>
 
 
               <div class="privacy-policy-text"></div>
