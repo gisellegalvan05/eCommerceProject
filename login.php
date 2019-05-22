@@ -16,11 +16,26 @@ if(!empty($_POST)){
     if($_POST['password'] != $_POST['passwordConfirm']){
        $errors['passwordConfirm'][] = 'Las contraseñas no coinciden' ;
     }
+    if ($_POST["nombre"] <8) {
+    $errors[]="El nombre debe estar completo";
+  }
+
+  if (empty($_POST["apellido"])) {
+    $errors[]= "El apellido debe estar completo";
+
+  }
 
 }
 
 
 
+
+
+
+
+
+
+ ?>
 
 
 
