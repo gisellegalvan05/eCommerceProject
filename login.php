@@ -1,4 +1,31 @@
-  <?php require 'includes/nav.php'; ?>
+  <?php
+session_start();
+
+require 'includes/nav.php';
+
+$errors=[];
+
+if(!empty($_POST)){
+
+  ////// VALIDACION TIPO DE ARCHIVO
+  if (!empty($_FILES["avatar"])) {
+    $allowed =  ["gif", "png", "jpg", "jpeg"];
+    $filename = $_FILES["avatar"]["name"];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if(!in_array($ext,$allowed) ) {
+      $errors[]= 'Formatos válidos de imagen: .gif, .png, .jpg o .jpeg';
+    }
+
+    if($_FILES['avatar']['size']>3000000){
+      $errors[]= 'Tamaño máximo permitido: 3MB';
+    }
+
+  }
+} else{
+  echo "No se cargaron datos.";
+}
+
+  ?>
 
 <!DOCTYPE html>
 <html>
@@ -25,10 +52,9 @@
         </ul>
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="col-12 col-lg-6 col pb-0 center">
+            <div class="col-12 col pb-0 center">
           <div class="account-login-inner">
-
-            <form class="" method="post">
+            <form class="" method="post" action="login.php">
               <p class="form-row form-row-wide"> <label for="username">Nombre de usuario o email&nbsp;<span class="required">*</span></label> <input type="text" class="input-text" name="username" id="username" autocomplete="username" value="">
               </p>
               <p class="form-row form-row-wide"> <label for="password">Contraseña&nbsp;<span class="required">*</span></label> <input class="input-text" type="password" name="password" id="password" autocomplete="current-password"></p>
@@ -40,13 +66,14 @@
               </p>
               <p class="lostPassword"> <a href="#">Olvidé mi contraseña</a></p>
             </form>
+
           </div>
         </div>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="col-12 col-lg-6 col pb-0 center">
+            <div class="col-12 col pb-0 center">
               <div class="account-register-inner">
-            <form method="post" class="">
+            <form method="post" enctype="multipart/form-data" action="login.php">
 
               <!-- FOMULARIO EMAIL -->
               <p class="form-row form-row-wide"> <label for="reg_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
@@ -65,8 +92,8 @@
                   class="input-text" name="pais" id="reg_pais" autocomplete="pais"></p>
 
               <!-- FOMULARIO AVATAR -->
-              <p class="form-row form-row-wide"> <label for="reg_avatar">Avatar&nbsp;<span class="required">*</span></label> <input type="text"
-                  class="input-text" name="avatar" id="reg_avatar" autocomplete="avatar"></p>
+              <p class="form-row form-row-wide"> <label for="reg_avatar">Seleccionar imagen&nbsp;<span class="required">*</span></label> <input type="file"
+                  class="form-control-file" name="avatar" id="reg_avatar"></p>
 
                 <!-- FOMULARIO SEXO -->
               <p class="form-row form-row-wide"> <label for="reg_sexo">Sexo&nbsp;<span class="required">*</span></label> <input type="text"
