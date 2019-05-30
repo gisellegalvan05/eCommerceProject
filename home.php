@@ -106,37 +106,39 @@
       </div>
     </div>
 
- <footer>
-   <div class="contacto-container">
-  <div class="row">
-    <div class="col-12">
-      <h2 class="titulo-division footer-tit">Contacto</h2>
-    </div>
-  </div>
-  <div class="container">
-<form>
-  <div class="form-row justify-content-center">
-    <div class="form-group col-12 col-md-3">
-      <label for="name">Nombre</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Ingresá tu nombre">
-    </div>
-      <div class="form-group col-12 col-md-3">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Ingresá tu email">
-      </div>
-  </div>
-  <div class="form-row justify-content-center">
-    <div class="form-group col-12 col-md-6">
-    <label for="comentarios">Dejanos un comentario</label>
-   <textarea class="form-control" id="comentarios"  name="coments" rows="5"></textarea>
-  </div>
- </div>
-    <p class="form-row justify-content-center "><button type="submit" class="btnLogin" name="submit" value="Submit">Enviar</button></p>
-</form>
-</div>
-    </div>
- </footer>
+    <!-- Es lo que copie de la pagina>-->
+  <section class="widget widget_blog_subscription">
+   <form action="#" method="post" accept-charset="utf-8" id="subscribe-blog">
+     <p>¡Suscribite y obtené $300 para tu primera compra!
+      Recibí nuestras promociones exclusivas y enterate de todas las novedades del mundo de la moda
+     </P>
+     <p>Suscribite a nuestro newsletter</p>
 
+     <p>
+       <input type="text" name="email" style="width: 95%; padding: 1px 2px" placeholder="Ingresá tu e-mail" value="" id="subscribe-field">
+     </p>
+     <p>
+       <input type="submit" value="Suscribir">
+     </p>
+   </form>
+  </section>
+
+<!--Este es otro ejemplo que busque :>-->
+
+ <a href="#" id="back-to-top" title="Subir"></a><footer class="newfooter">
+<!-- <vtex.cmc:newsletterOptIn/> -->
+<div id="footerNewsletter" class="col-newsletter"><div class="conteiner-newsletter">
+<form id="homenl" action="javascript:FormValidate();" method="POST" enctype="multipart/form-data" novalidate="novalidate">
+  <h3 class="newsletter-title">Suscribite a nuestro newsletter</h3>
+  <div id="newsletter">
+  <fieldset> <input id="email" name="email" type="text" value="" placeholder="Ingresá tu e-mail" size="30" /> </fieldset>
+  <fieldset class="full"><input type="submit" id="btn-submit" class="btn" name="btn-submit" value="OK" /> </fieldset></div>
+  <div id="nl_message_loading" class="alert alert-info" style="display:none;">Cargando...</div>
+  <div id="nl_message_validate" class="alert alert-warning" style="display:none;">Este campo es obligatorio.</div>
+  <div id="nl_message_success" class="alert alert-success" style="display:none;">Gracias por suscribirte a nuestro newsletter! </div>
+  <div id="nl_message_error" class="alert alert-danger" style="display:none;">Se detectó un error, por favor revisá que tu mail sea el correcto.</div>
+</form></div></div>
+<!-- hasta aca -->
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
