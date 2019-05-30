@@ -134,7 +134,7 @@
   <div id="nl_message_success" class="alert alert-success" style="display:none;">Gracias por suscribirte a nuestro newsletter! </div>
   <div id="nl_message_error" class="alert alert-danger" style="display:none;">Se detectó un error, por favor revisá que tu mail sea el correcto.</div>
 </form></div></div>
-
+<!-- hasta aca -->
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
