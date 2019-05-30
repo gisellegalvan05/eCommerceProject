@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php require 'includes/nav.php' ?>
 
 <!DOCTYPE html>
@@ -36,8 +38,9 @@
               <h2>Primavera/Verano</h2>
               <h5>Hombre</h5>
             </div>
-            <img src="imgs/eCommerce/hombre/eCommerce8.png" alt="" class="w-100" /></a>
+            <img src="imgs/eCommerce/hombre/eCommerce8.png" alt="" class="w-100" />
           </div>
+          </a>
         </article>
       </div>
     </div>

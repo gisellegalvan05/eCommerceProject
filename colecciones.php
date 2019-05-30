@@ -1,3 +1,4 @@
+<?php session_start(); ?>
   <?php require 'includes/nav.php'; ?>
 
 <!DOCTYPE html>
@@ -11,11 +12,6 @@
   <title>HOME</title>
 </head>
 <body>
-<section class="division">
-  <div class="col-12">
-    <h2 class="titulo-division">Colecciónes</h2>
-  </div>
-</section>
 <div class="container">
     <section class="productos" id="productos">
       <div class="row">
