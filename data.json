@@ -7,6 +7,14 @@
         "sexo": "fm",
         "password": "$2y$10$7icd3ZM3WTYlyakPlBsVmuSvG\/b51JcdB6aePL.THrcdRC4saMZca",
         "register": "Register"
+    },
+    {
+        "email": "claudia@example.com",
+        "nombre": "Claudia",
+        "apellido": "Martinez",
+        "pais": "uy",
+        "sexo": "fm",
+        "password": "$2y$10$YThROIVQ.3tWBR3ygCwwp.Jl0R2uHLt9c.HlADqV\/3W6jHdG0f8JC",
+        "register": "Register"
     }
-
 ]

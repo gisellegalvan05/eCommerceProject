@@ -211,11 +211,12 @@ $paises = [
 
           <!-- FOMULARIO ACEPTO TERMINOS -->
           <label class="">
-            <input class="" name="terminos" type="checkbox" id="reg_terminos" value="forever"><span>Acepto términos y condiciones</span><br>
+            <input class="" name="terminos" type="checkbox" id="reg_terminos" value="forever" <?= (isset($_POST["terminos"])) ?  "checked" : '';?>><span>Acepto términos y condiciones</span><br>
             <a href="terminos-condiciones.php" target="_new"
              > Ver términos y condiciones</a>
           </label>
           <p class="alerta"><?= $errors['terminos'][0] ?? ''?></p>
+
 
           <div class="privacy-policy-text"></div>
           <p class="form-row"><button type="submit" class="btnLogin" name="register" value="Register">Registrarme</button></p>
