@@ -3,9 +3,9 @@
 <?php require 'includes/nav.php' ?>
 <?php
 
-function redirect($url){
-header('location: ' . $url);
-}
+  function redirect($url){
+  header('location: ' . $url);
+  }
 
 $errors =[];
 
@@ -16,6 +16,12 @@ $errors =[];
       $json =file_get_contents('data.json');
 
       $usuarios = json_decode($json, true);
+      if (empty($_POST['email'])) {
+        $errors['email'][]= "Ingrese su email";
+      }
+      if (empty($_POST['password'])) {
+        $errors['password'][]= "Ingrese su contaseña";
+      }
 
       foreach($usuarios as $usuario){
         if($usuario['email'] === $_POST['email'] && (password_verify($_POST['password'],$usuario['password'])==TRUE)){
@@ -70,6 +76,7 @@ $errors =[];
               <p class="form-row form-row-wide"><label for="log_password">Contraseña&nbsp;<span class="required">*</span></label><input type="password"
                   class="input-text" name="password" id="log_password" autocomplete="new-password"></p>
                   <p class="alerta"><?=$errors['password'][0] ?? ''?></p>
+                
 
 
               <div class="privacy-policy-text"></div>

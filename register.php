@@ -7,25 +7,45 @@
 
 if(!empty($_POST)){
 
-  if(empty($_POST['password'])){
-       $errors['password'][] = 'El campo contraseña está vacío';
-     }
-  if(empty($_POST['passwordConfirm'])){
-         $errors['paswword'][] = 'El campo de confirmación de contraseña está vacio';
-     }
-  if(strlen($_POST['password']) < 8){
-        $errors['password'][] = 'La contraseña debe tener al menos 8 caracteres';
+$json =file_get_contents('data.json');
+
+$usuarios = json_decode($json, true);
+
+foreach($usuarios as $usuario){
+  if($usuario['email'] === $_POST['email']){
+   $errors['email'][] = 'El email ya está en uso';
+      }
     }
-  if($_POST['password'] != $_POST['passwordConfirm']){
-       $errors['passwordConfirm'][] = 'Las contraseñas no coinciden' ;
-    }
-    if (empty($_POST["nombre"])) {
+
+if (empty($_POST['email'])) {
+ $errors['email'][] = "El campo email debe estar completo";
+  }
+
+if (FILTER_VAR($_POST['email'], FILTER_VALIDATE_EMAIL) == FALSE) {
+   $errors['email'][] = "No es el formato correcto";
+}
+
+    if (empty($_POST['nombre'])) {
     $errors['nombre'][]="El nombre debe estar completo";
     }
 
-    if (empty($_POST["apellido"])) {
+    if (empty($_POST['apellido'])) {
       $errors['apellido'][]= "El apellido debe estar completo";
     }
+
+    if(empty($_POST['password'])){
+         $errors['password'][] = 'El campo contraseña está vacío';
+       }
+    if(empty($_POST['passwordConfirm'])){
+           $errors['paswword'][] = 'El campo de confirmación de contraseña está vacio';
+       }
+    if(strlen($_POST['password']) < 8){
+          $errors['password'][] = 'La contraseña debe tener al menos 8 caracteres';
+      }
+
+    if($_POST['password'] != $_POST['passwordConfirm']){
+         $errors['passwordConfirm'][] = 'Las contraseñas no coinciden' ;
+      }
 
     if (!empty($_FILES["avatar"])) {
       $allowed =  ["gif", "png", "jpg", "jpeg"];
@@ -41,6 +61,23 @@ if(!empty($_POST)){
       }
 
     }
+
+
+    if(isset($_POST['sexo'])){
+
+      if($_POST['sexo'] != 'fm' && $_POST['sexo'] != 'ms'){
+      $errors['sexo'][] = "La opción seleccionada es invalida";
+        }
+      }else {
+       $errors['sexo'][] = "Debe seleccionar una opción";
+      }
+
+
+
+    if(empty($_POST['terminos'])){
+      $errors['terminos'][] = "Debe aceptar los términos y condiciones";
+    }
+
     //array_merge($_POST, [
     //'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)]);
 
@@ -71,6 +108,14 @@ if(!empty($_POST)){
     }
 
 }
+
+$paises = [
+"ar" => "Argentina",
+"br" => "Brasil",
+"ch" => "Chile",
+"uy" => "Uruguay",
+"pry"=> "Paraguay"
+];
 
 
  ?>
@@ -105,28 +150,35 @@ if(!empty($_POST)){
 
               <!-- FOMULARIO EMAIL -->
               <p class="form-row form-row-wide"> <label for="reg_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
-                  class="input-text" name="email" id="reg_email" autocomplete="email" value=""></p>
+              class="input-text" name="email" id="reg_email" autocomplete="email" value="<?=$_POST['email'] ?? ''?>"></p>
+              <p class="alerta"><?= $errors['email'][0] ?? '' ?></p>
 
               <!-- FOMULARIO NOMBRE -->
               <p class="form-row form-row-wide"> <label for="reg_nombre">Nombre&nbsp;<span class="required">*</span></label> <input type="text"
-                  class="input-text" name="nombre" id="reg_nombre" autocomplete="nombre"></p>
+                  class="input-text" name="nombre" id="reg_nombre" autocomplete="nombre" value="<?=$_POST['nombre'] ?? ''?>"></p>
                       <p class="alerta"><?=$errors['nombre'][0] ?? ''?></p>
 
 
               <!-- FOMULARIO APELLIDO -->
               <p class="form-row form-row-wide"> <label for="reg_apellido">Apellido&nbsp;<span class="required">*</span></label> <input type="text"
-                  class="input-text" name="apellido" id="reg_apellido" autocomplete="apellido"></p>
+                  class="input-text" name="apellido" id="reg_apellido" autocomplete="apellido" value="<?=$_POST['apellido'] ?? ''?>"></p>
                   <p class="alerta"><?=$errors['apellido'][0] ?? ''?></p>
 
                 <!-- FOMULARIO PAIS DE NACIMIENTO -->
               <p class="form-row form-row-wide">
               <label for="reg_pais">País de nacimiento&nbsp;<span class="required">*</span></label>
               <select class="form-control"  name="pais" id="reg_pais">
-              <option value="ar">Argentina</option>
-              <option value="pry">Paraguay</option>
-              <option value="ur">Uruguay</option>
-              <option value="br">Brasil</option>
-              <option value="pr">Perú</option>
+             <?php foreach ($paises as $value => $pais) : ?>
+               <?php if ($_POST['pais'] == $value) : ?>
+              <option value="<?=$value?>" selected>
+                  <?=$pais?>
+              </option>
+            <?php else : ?>
+               <option value="<?=$value?>">
+                 <?=$pais?>
+               </option>
+             <?php endif; ?>
+             <?php endforeach; ?>
               </select>
             </p>
 
@@ -137,18 +189,15 @@ if(!empty($_POST)){
 
                 <!-- FOMULARIO SEXO -->
               <p class="form-row form-row-wide"> <label for="reg_sexo">Sexo&nbsp;<span class="required">*</span></label> <div class="custom-control custom-radio">
-              <input type="radio" id="masculino" name="sexo" class="custom-control-input" value="ms">
+              <input type="radio" id="masculino" name="sexo" class="custom-control-input" value="ms"  <?php if ($_POST["sexo"] == "ms") echo "checked";?>>
               <label class="custom-control-label" for="masculino">Masculino</label>
              </div>
               <div class="custom-control custom-radio">
-                <input type="radio" id="femenino" name="sexo" class="custom-control-input" value="fm">
-                <label class="custom-control-label" for="femenino">Femenino</label>
+              <input type="radio" id="femenino" name="sexo" class="custom-control-input" value="fm"  <?php if ($_POST["sexo"] == "fm") echo "checked";?> >
+              <label class="custom-control-label" for="femenino">Femenino</label>
               </div></p>
+              <p class="alerta"><?=$errors['sexo'][0] ?? ''?></p>
 
-              <!-- FOMULARIO ACEPTO TERMINOS -->
-              <label class="">
-                <input class="" name="terminos" type="checkbox" id="reg_terminos" value="forever"> <span>Acepto los términos y condiciones</span>
-              </label>
 
               <!-- FOMULARIO CONTRASEÑA -->
               <p class="form-row form-row-wide"> <label for="reg_password">Contraseña&nbsp;<span class="required">*</span></label> <input type="password"
@@ -156,14 +205,21 @@ if(!empty($_POST)){
                   <p class="alerta"><?=$errors['password'][0] ?? ''?></p>
 
             <!-- FOMULARIO CONFIRMAR CONTRASEÑA -->
-            <p class="form-row form-row-wide"><label for="reg_passwordConfirm">Confirmar Contraseña&nbsp;<span class="required">*</span></label> <input type="password"
-                class="input-text" name="passwordConfirm" id="reg_passwordConfirm" autocomplete="passwordConfirm"></p>
-                  <p class="alerta"><?=$errors['passwordConfirm'][0] ?? ''?></p>
+      <p class="form-row form-row-wide"><label for="reg_passwordConfirm">Confirmar Contraseña&nbsp;<span class="required">*</span></label><input type="password"
+          class="input-text" name="passwordConfirm" id="reg_passwordConfirm" autocomplete="passwordConfirm"></p>
+          <p class="alerta"><?=$errors['passwordConfirm'][0] ?? ''?></p>
 
+          <!-- FOMULARIO ACEPTO TERMINOS -->
+          <label class="">
+            <input class="" name="terminos" type="checkbox" id="reg_terminos" value="forever"><span>Acepto términos y condiciones</span><br>
+            <a href="terminos-condiciones.php" target="_new"
+             > Ver términos y condiciones</a>
+          </label>
+          <p class="alerta"><?= $errors['terminos'][0] ?? ''?></p>
 
-              <div class="privacy-policy-text"></div>
-              <p class="form-row"><button type="submit" class="btnLogin" name="register" value="Register">Registrarme</button></p>
-            </form>
+          <div class="privacy-policy-text"></div>
+          <p class="form-row"><button type="submit" class="btnLogin" name="register" value="Register">Registrarme</button></p>
+          </form>
           </div>
             </div>
           </div>
