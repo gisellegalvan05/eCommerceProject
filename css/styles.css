@@ -24,6 +24,10 @@ background-image: url('../imgs/wool.png');
     padding-right:5%;
    }
 
+   section.newsletter {
+    margin:50px;
+   }
+
   .titulo-division{
    text-align: center;
    text-transform: uppercase;
@@ -74,10 +78,6 @@ background-image: url('../imgs/wool.png');
     height: 100vh;
   }
 
-  .contacto-container{
-
-    padding: 15px 45px;
-  }
 
   label {
     color: #fff;
@@ -89,7 +89,7 @@ background-image: url('../imgs/wool.png');
     font-size: .9em;
     margin-bottom: 0.4em;
   }
-  .btnLogin {
+  .btnLogin, .btnSubscrib {
     background-color: #00ffe5 !important;
     position: relative;
     display: inline-block;
@@ -117,6 +117,10 @@ background-image: url('../imgs/wool.png');
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
   }
+
+
+
+
 
 }
 
