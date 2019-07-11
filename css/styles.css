@@ -8,7 +8,7 @@
   }
 
   body {
-background-image: url('../imgs/wool.png');
+   background-image: url('../imgs/grey_wash_wall.png');
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     width: 100% !important;
@@ -17,16 +17,138 @@ background-image: url('../imgs/wool.png');
 
   nav.navbar{
    background-color: rgba(0, 0, 0, 0.5)!important;
+   z-index: 3px!important;
  }
+
+ div.imagen-banner {
+   display:block;
+   width: 100%;
+   height: 100vh;
+ }
+
+div.imagen-banner img.img-banner {
+     object-fit: cover;
+     width: 100%;
+}
+
+ div.video-banner  {
+display:none;
+ }
+
+ div.video-banner  iframe {
+  display:none;
+}
+
+  div.tituloBanner {
+  display: none;
+  }
+
+  div.tituloBanner div.redes-sociales{
+   display: none;
+  }
+
 
   section.about, section.sucursales{
     padding-left:5%;
     padding-right:5%;
    }
 
+
+  .titulo-division{
+     text-align: center;
+     text-transform: uppercase;
+     margin-bottom: 30px;
+     margin-top: 30px;
+    }
+
+    section.division {
+    background-color:rgba(0,0,0,0.8);
+    padding: 5px;
+    color:#fff;
+    margin-top: 80px;
+   }
+
+    .relative {
+      position: relative;
+    }
+
+    .collection-title {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-color: #0000004a;
+     margin-right: 15px;
+     z-index: 10;
+      }
+
+      .collection-title:hover {
+       background-color: #0000005a;
+      }
+
+      .collection-title h2 {
+        top: 40%;
+        display: -webkit-inline-box;
+        position: absolute;
+        width: 100%;
+        text-align: -webkit-center;
+        color: #fff;
+      }
+
+      .collection-title h5 {
+        top: 55%;
+        display: -webkit-inline-box;
+        position: absolute;
+        width: 100%;
+        text-align: -webkit-center;
+        color: #fff;
+      }
+
+  .producto{
+    margin-bottom: 10px;
+    }
+
+  section.about-us {
+      margin-top: 50px;
+    }
+
+  section.categorias {
+        margin-top:50px;
+        margin-bottom:50px;
+        padding: 0 5%;
+      }
+
+      .div-img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+
    section.newsletter {
     margin:50px;
    }
+
+footer {
+  background-color: #000;
+  padding: 3% 5%;
+  color: #fff;
+  text-align: center;
+}
+
+article.info-contacto {
+  margin-top: 30px;
+}
+
+ div.redes-sociales-footer a {
+  text-decoration: none;
+}
+
+div.redes-sociales-footer i {
+  font-size: 40px;
+  margin-left:20px;
+  margin-top: 30px;
+  color: #fff;
+}
+
 
   .titulo-division{
    text-align: center;
@@ -53,10 +175,17 @@ background-image: url('../imgs/wool.png');
     }
 
    .fondo-parrafo{
-    background-color: rgba(0,255,229,0.7);
+    background-color: rgba(0,0,0,0.4);
     border-radius: 10px;
     color:#fff;
-    padding: 5%;
+    padding: 6%;
+    }
+
+    .img-container img.logotipo-banner {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      display: block;
     }
 
    article.about-us-slide div.carousel div.carousel-inner div.carousel-item img{
@@ -89,7 +218,8 @@ background-image: url('../imgs/wool.png');
     font-size: .9em;
     margin-bottom: 0.4em;
   }
-  .btnLogin, .btnSubscrib {
+
+  .btnSubmit {
     background-color: #00ffe5 !important;
     position: relative;
     display: inline-block;
@@ -118,6 +248,11 @@ background-image: url('../imgs/wool.png');
     box-sizing: border-box;
   }
 
+  .btn-footer {
+    margin-top: 20px;
+    margin: 0 auto;
+  }
+
   .input-text {
     box-sizing: border-box;
     border: 1px solid #ddd;
@@ -134,10 +269,109 @@ background-image: url('../imgs/wool.png');
     transition: color .3s, border .3s, background .3s, opacity .3s;
   }
 
+.carousel {
+  background-image: url('../imgs/grey_wash_wall.png');
+}
 
+.carousel-image {
+  display: block;
+  height: 300px;
+  /* set min-width, allow images to set cell width */
+  min-width: 150px;
+  max-width: 100%;
+  margin-right: 10px;
+  /* vertically center */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel.is-fullscreen .carousel-image {
+  height: auto;
+  max-height: 100%;
+}
+ ol.flickity-page-dots {
+   display: none;
+ }
 
 }
 
-@media only screen and (min-device-width : 481px) and (max-device-width : 768px) {}
 
-@media only screen and (min-device-width : 769px) and (max-device-width : 1024px) {}
+
+@media only screen and (min-device-width : 769px)  {
+
+  div.tituloBanner {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 450px;
+    top:250px;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 60px;
+    font-family: 'Abril Fatface', cursive;
+  }
+
+
+    div.tituloBanner h1{
+      font-size: 80px;
+    }
+
+    div.tituloBanner div.redes-sociales{
+      display:block;
+      width: 100%;
+      height: 50px;
+      margin-top: 210px;
+      background-color:#000;
+      z-index: 2;
+      text-align: right;
+      padding: 0px 55px;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    div.tituloBanner div.redes-sociales a {
+      text-decoration: none;
+
+    }
+
+    div.tituloBanner div.redes-sociales i {
+      font-size: 40px;
+      margin-left:20px;
+      color: #fff;
+    }
+
+    div.video-banner  {
+      display: block;
+     position: relative;
+     padding-bottom: 56.25%;
+     height: 0;
+     overflow: hidden;
+    }
+
+    div.video-banner  iframe {
+      display: block;
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    div.imagen-banner {
+      display:none;
+    }
+
+   div.imagen-banner img.img-banner {
+        display:none;
+   }
+
+    section.carrousel-productos {
+      margin-top: -50px;
+     }
+
+}

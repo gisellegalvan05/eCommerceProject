@@ -12,19 +12,23 @@
         <li class="nav-item active">
           <a class="nav-link" href="home.php">Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="colecciones.php">Colecciones</a>
-        </li>
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Colecciones</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="mujer.php">Mujer</a>
+    <a class="dropdown-item" href="hombre.php">Hombre</a>
+    <a class="dropdown-item" href="ninio.php">Niños</a>
+</li>
           <?php if (!empty($_SESSION) && (isset($_SESSION['email']))) : ?>
         <li class="nav-item">
-          <a id="link-carrito" class="nav-link" href="#myModal">Carrito</a>
+          <a id="link-carrito" class="nav-link" href="carrito.php">Carrito</a>
           <style type="text/css">
             #link-carrito{display:}
           </style>
         </li>
           <?php else :?>
             <li class="nav-item">
-              <a id="link-carrito" class="nav-link" href="#myModal" >Carrito</a>
+              <a id="link-carrito" class="nav-link" href="carrito.php" >Carrito</a>
               <style type="text/css">
                 #link-carrito{display:none}
               </style>

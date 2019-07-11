@@ -35,8 +35,6 @@ $errors =[];
       }
     }
   }
-
-
  ?>
 
 <!DOCTYPE html>
@@ -49,45 +47,30 @@ $errors =[];
   <link rel="stylesheet" href="css/styles-login.css">
   <title>HOME</title>
 </head>
-<body>
-<div class="row login-container">
-  <section id="login" class="center">
-    <div class="lightbox-inner">
-      <div class="row" id="customer_login">
-        <ul class="nav nav-tabs width100" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link uppercase" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><h3>LOGIN</h3></a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="col-12 col pb-0 center">
-              <div class="account-login-inner">
-            <form method="post" enctype="multipart/form-data" action="login.php">
-
-              <!-- FOMULARIO EMAIL -->
-              <p class="form-row form-row-wide"> <label for="log_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
-                  class="input-text" name="email" id="log_email" autocomplete="email" value=""></p>
-                  <p class="alerta"><?=$errors['email'][0] ?? ''?></p>
-
-
-              <!-- FOMULARIO CONTRASEÑA -->
-              <p class="form-row form-row-wide"><label for="log_password">Contraseña&nbsp;<span class="required">*</span></label><input type="password"
-                  class="input-text" name="password" id="log_password" autocomplete="new-password"></p>
-                  <p class="alerta"><?=$errors['password'][0] ?? ''?></p>
-                
-
-
-              <div class="privacy-policy-text"></div>
-              <p class="form-row"><button type="submit" class="btnLogin" name="login" value="Login">Login</button></p>
-            </form>
-            <div class="link-registro">
-              <h6>Si aún no te registraste, hacelo <a href="register.php">acá</h6>
-              </h3>
-            </div>
-          </div>
-            </div>
+<body class="login">
+<div class="row justify-content-center login-container">
+<section id="login">
+<h3 class="text-center titleLogin">LOGIN</h3>
+ <div class="col-12 col pb-0">
+  <div class="form-login-container">
+    <form method="post" enctype="multipart/form-data" action="login.php">
+    <!-- FOMULARIO EMAIL -->
+    <p class="form-row form-row-wide"> <label for="log_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
+      class="input-text" name="email" id="log_email" autocomplete="email" value=""></p>
+    <p class="alerta"><?=$errors['email'][0] ?? ''?></p>
+      <!-- FOMULARIO CONTRASEÑA -->
+    <p class="form-row form-row-wide"><label for="log_password">Contraseña&nbsp;<span class="required">*</span></label>
+    <input type="password"
+      class="input-text" name="password" id="log_password" autocomplete="new-password"></p>
+    <p class="alerta"><?=$errors['password'][0] ?? ''?></p>
+    <div class="privacy-policy-text"></div>
+    <p class="form-row buttons"><button type="submit" class="btnSubmit" name="login" value="Login">Ingresar</button>
+    <a class="btn btnRegister" href="register.php" role="button" name="login">Registrarse</a></p>
+    </form>
+      </h3>
+      </div>
+       </div>
+         </div>
           </div>
         </div>
       </div>

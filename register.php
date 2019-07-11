@@ -120,7 +120,6 @@ $paises = [
 
  ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,69 +131,52 @@ $paises = [
   <title>HOME</title>
 </head>
 <body>
-<div class="row login-container">
-  <section id="login" class="center">
-    <div class="lightbox-inner">
-      <div class="row" id="customer_login">
-        <ul class="nav nav-tabs width100" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link uppercase" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><h3>REGISTER</h3></a>
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="col-12 col pb-0 center">
-              <div class="account-register-inner">
-            <form method="post" enctype="multipart/form-data" action="register.php">
-
-              <!-- FOMULARIO EMAIL -->
-              <p class="form-row form-row-wide"> <label for="reg_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
-              class="input-text" name="email" id="reg_email" autocomplete="email" value="<?=$_POST['email'] ?? ''?>"></p>
-              <p class="alerta"><?= $errors['email'][0] ?? '' ?></p>
-
-              <!-- FOMULARIO NOMBRE -->
-              <p class="form-row form-row-wide"> <label for="reg_nombre">Nombre&nbsp;<span class="required">*</span></label> <input type="text"
-                  class="input-text" name="nombre" id="reg_nombre" autocomplete="nombre" value="<?=$_POST['nombre'] ?? ''?>"></p>
-                      <p class="alerta"><?=$errors['nombre'][0] ?? ''?></p>
-
-
-              <!-- FOMULARIO APELLIDO -->
-              <p class="form-row form-row-wide"> <label for="reg_apellido">Apellido&nbsp;<span class="required">*</span></label> <input type="text"
-                  class="input-text" name="apellido" id="reg_apellido" autocomplete="apellido" value="<?=$_POST['apellido'] ?? ''?>"></p>
-                  <p class="alerta"><?=$errors['apellido'][0] ?? ''?></p>
-
-                <!-- FOMULARIO PAIS DE NACIMIENTO -->
-              <p class="form-row form-row-wide">
-              <label for="reg_pais">País de nacimiento&nbsp;<span class="required">*</span></label>
-              <select class="form-control"  name="pais" id="reg_pais">
-             <?php foreach ($paises as $value => $pais) : ?>
-               <?php if ($_POST['pais'] == $value) : ?>
-              <option value="<?=$value?>" selected>
-                  <?=$pais?>
-              </option>
-            <?php else : ?>
-               <option value="<?=$value?>">
-                 <?=$pais?>
-               </option>
-             <?php endif; ?>
-             <?php endforeach; ?>
-              </select>
-            </p>
-
-
-              <!-- FOMULARIO AVATAR -->
-              <p class="form-row form-row-wide"> <label for="reg_avatar">Seleccionar imagen&nbsp;<span class="required">*</span></label> <input type="file"
-                  class="form-control-file" name="avatar" id="reg_avatar"></p>
-
-                <!-- FOMULARIO SEXO -->
-              <p class="form-row form-row-wide"> <label for="reg_sexo">Sexo&nbsp;<span class="required">*</span></label> <div class="custom-control custom-radio">
-              <input type="radio" id="masculino" name="sexo" class="custom-control-input" value="ms"  <?php if ($_POST["sexo"] == "ms") echo "checked";?>>
-              <label class="custom-control-label" for="masculino">Masculino</label>
-             </div>
-              <div class="custom-control custom-radio">
-              <input type="radio" id="femenino" name="sexo" class="custom-control-input" value="fm"  <?php if ($_POST["sexo"] == "fm") echo "checked";?> >
-              <label class="custom-control-label" for="femenino">Femenino</label>
+<div class="row justify-content-center register-container">
+<section id="register">
+<h3 class="text-center titleLogin">REGISTER</h3>
+<div class="col-12 col pb-0">
+<div class="form-register-container">
+<form method="post" enctype="multipart/form-data" action="register.php">
+    <!-- FOMULARIO EMAIL -->
+    <p class="form-row form-row-wide"> <label for="reg_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
+    class="input-text" name="email" id="reg_email" autocomplete="email" value="<?=$_POST['email'] ?? ''?>"></p>
+    <p class="alerta"><?= $errors['email'][0] ?? '' ?></p>
+    <!-- FOMULARIO NOMBRE -->
+    <p class="form-row form-row-wide"> <label for="reg_nombre">Nombre&nbsp;<span class="required">*</span></label> <input type="text"
+    class="input-text" name="nombre" id="reg_nombre" autocomplete="nombre" value="<?=$_POST['nombre'] ?? ''?>"></p>
+    <p class="alerta"><?=$errors['nombre'][0] ?? ''?></p>
+    <!-- FOMULARIO APELLIDO -->
+    <p class="form-row form-row-wide"> <label for="reg_apellido">Apellido&nbsp;<span class="required">*</span></label> <input type="text"
+    class="input-text" name="apellido" id="reg_apellido" autocomplete="apellido" value="<?=$_POST['apellido'] ?? ''?>"></p>
+    <p class="alerta"><?=$errors['apellido'][0] ?? ''?></p>
+    <!-- FOMULARIO PAIS DE NACIMIENTO -->
+    <p class="form-row form-row-wide">
+    <label for="reg_pais">País de nacimiento&nbsp;<span class="required">*</span></label>
+    <select class="form-control"  name="pais" id="reg_pais">
+    <?php foreach ($paises as $value => $pais) : ?>
+    <?php if ($_POST['pais'] == $value) : ?>
+    <option value="<?=$value?>" selected>
+    <?=$pais?>
+    </option>
+    <?php else : ?>
+    <option value="<?=$value?>">
+     <?=$pais?>
+    </option>
+    <?php endif; ?>
+     <?php endforeach; ?>
+    </select>
+    </p>
+    <!-- FOMULARIO AVATAR -->
+    <p class="form-row form-row-wide"> <label for="reg_avatar">Seleccionar imagen&nbsp;<span class="required">*</span></label>
+    <input type="file" class="form-control-file" name="avatar" id="reg_avatar"></p>
+      <!-- FOMULARIO SEXO -->
+    <p class="form-row form-row-wide"> <label for="reg_sexo">Sexo&nbsp;<span class="required">*</span></label> <div class="custom-control custom-radio">
+    <input type="radio" id="masculino" name="sexo" class="custom-control-input" value="ms">
+    <label class="custom-control-label" for="masculino">Masculino</label>
+     </div>
+    <div class="custom-control custom-radio">
+    <input type="radio" id="femenino" name="sexo" class="custom-control-input" value="fm">
+    <label class="custom-control-label" for="femenino">Femenino</label>
               </div></p>
               <p class="alerta"><?=$errors['sexo'][0] ?? ''?></p>
 
@@ -219,7 +201,7 @@ $paises = [
 
 
           <div class="privacy-policy-text"></div>
-          <p class="form-row"><button type="submit" class="btnLogin" name="register" value="Register">Registrarme</button></p>
+          <p class="form-row"><button type="submit" class="btnSubmit" name="register" value="Register">Registrarme</button></p>
           </form>
           </div>
             </div>
