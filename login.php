@@ -11,11 +11,6 @@ $errors =[];
 
   if (!empty($_POST)) {
 
-    if (empty($errors)) {
-
-      $json =file_get_contents('data.json');
-
-      $usuarios = json_decode($json, true);
       if (empty($_POST['email'])) {
         $errors['email'][]= "Ingrese su email";
       }
@@ -23,17 +18,22 @@ $errors =[];
         $errors['password'][]= "Ingrese su contaseña";
       }
 
-      foreach($usuarios as $usuario){
-        if($usuario['email'] === $_POST['email'] && (password_verify($_POST['password'],$usuario['password'])==TRUE)){
-         $_SESSION['email'] = $usuario['email'];
-         redirect('home.php');
+      if (empty($errors)) {
+
+        $usuario = Usuario::buscar($_POST['email']);
+        if ($usuario != false) {
+          if ($usuario->passwordValida($_POST['password'])) {
+
+            $_SESSION['email'] = $usuario->email;
+            redirect('home.php');
+
+          }
         }
-        else{
-           $errors['password'][] = 'Las contraseñas no coinciden';
-            $errors['email'][] = 'El email no es correcto';
-        }
+
+        $errors['password'][] = 'Las contraseñas no coinciden';
+        $errors['email'][] = 'El email no es correcto';
+
       }
-    }
   }
  ?>
 

@@ -7,23 +7,17 @@
 
 if(!empty($_POST)){
 
-$json =file_get_contents('data.json');
-
-$usuarios = json_decode($json, true);
-
-foreach($usuarios as $usuario){
-  if($usuario['email'] === $_POST['email']){
-   $errors['email'][] = 'El email ya está en uso';
-      }
+    if (Usuario::buscar($_POST['email']) != false) {
+      $errors['email'][] = 'El email ya está en uso';
     }
 
-if (empty($_POST['email'])) {
- $errors['email'][] = "El campo email debe estar completo";
-  }
+    if (empty($_POST['email'])) {
+     $errors['email'][] = "El campo email debe estar completo";
+      }
 
-if (FILTER_VAR($_POST['email'], FILTER_VALIDATE_EMAIL) == FALSE) {
-   $errors['email'][] = "No es el formato correcto";
-}
+    if (FILTER_VAR($_POST['email'], FILTER_VALIDATE_EMAIL) == FALSE) {
+       $errors['email'][] = "No es el formato correcto";
+    }
 
     if (empty($_POST['nombre'])) {
     $errors['nombre'][]="El nombre debe estar completo";
@@ -83,25 +77,16 @@ if (FILTER_VAR($_POST['email'], FILTER_VALIDATE_EMAIL) == FALSE) {
 
     if (empty($errors)) {
 
-     $json = file_get_contents('data.json');
+     $usuarioBD = new Usuario();
 
-     $usuarios = json_decode($json,true);
+     $usuarioBD->nombre   = $_POST['nombre'];
+     $usuarioBD->apellido = $_POST['apellido'];
+     $usuarioBD->pais     = $_POST['pais'];
+     $usuarioBD->sexo     = $_POST['sexo'];
+     $usuarioBD->email    = $_POST['email'];
+     $usuarioBD->password = $_POST['password'];
 
-
-     $usuarios[] = [
-         "email" => $_POST['email'],
-         "nombre"=>  $_POST['nombre'],
-         "apellido"=>  $_POST['apellido'],
-         "pais"=>   $_POST['pais'],
-         "sexo"=>   $_POST['sexo'],
-         "password"=>  password_hash($_POST['password'],PASSWORD_DEFAULT),
-         "register"=>   $_POST['register']
-       ];
-
-
-     $json = json_encode($usuarios, JSON_PRETTY_PRINT);
-
-     file_put_contents('data.json', $json);
+     $usuarioBD->guardar();
 
      header('location: login.php');
 
