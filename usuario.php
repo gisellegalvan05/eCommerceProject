@@ -15,39 +15,68 @@ class Usuario {
 
   // metodos de clase
 
+  // conectar a la base
+  static private function conectar() {
+    return new PDO('mysql:dbname=ecommerce;host=127.0.0.1;port=3306', 'root', '');
+  }
+
   static public function crearTabla() {
-    $usuarios = [];
-    $json = json_encode($usuarios);
-    file_put_contents('data.json', $json);
+    $base = self::conectar();
+    $base->query('create table usuarios (
+      nombre varchar(50),
+      apellido varchar(50),
+      pais varchar(2),
+      sexo varchar(2),
+      email varchar(100),
+      password varchar(100),
+      primary key (email)
+    )');
   }
 
   static public function buscar($email) {
-    $json = file_get_contents('data.json');
-    $usuarios = json_decode($json, true);
-    foreach ($usuarios as $usuario) {
-      if ($usuario['email'] === $email) {
-        return $usuario;
-      }
+    $base = self::conectar();
+
+    // buscar registro con email = $email
+    $consulta = $base->prepare('select * from usuarios where email = :email');
+    $consulta->execute([
+      ':email' => $email
+    ]);
+
+    $resultado = $consulta->fetch();
+    if ($resultado) {
+      // si hubo un resultado
+      // crear un objeto de la clase usuario y devolver el objeto
+      $usuario = new self();
+      $usuario->nombre   = $resultado['nombre'];
+      $usuario->apellido = $resultado['apellido'];
+      $usuario->pais     = $resultado['pais'];
+      $usuario->sexo     = $resultado['sexo'];
+      $usuario->email    = $resultado['email'];
+      $usuario->password = $resultado['password'];
+      return $usuario;
+    } else {
+      // si no se encontro nada, devolver false
+      return false;
     }
-    return false;
+
   }
 
   // metodos de instancia
 
   function guardar() {
-    $usuarioNuevo = [
-      "email"    => $this->email,
+    $base = self::conectar();
+    // preparar un insert de un registro
+    $consulta = $base->prepare('insert into usuarios (nombre, apellido, pais, sexo, email, password)
+                                values (:nombre, :apellido, :pais, :sexo, :email, :password)');
+    // ejecutar con $usuarioNuevo
+    $consulta->execute([
       "nombre"   => $this->nombre,
       "apellido" => $this->apellido,
       "pais"     => $this->pais,
       "sexo"     => $this->sexo,
-      "password" => password_hash($this->password, PASSWORD_DEFAULT),
-    ];
-    $json = file_get_contents('data.json');
-    $usuarios = json_decode($json, true);
-    $usuarios[] = $usuarioNuevo;
-    $json = json_encode($usuarios, JSON_PRETTY_PRINT);
-    file_put_contents('data.json', $json);
+      "email"    => $this->email,
+      "password" => password_hash($this->password, PASSWORD_DEFAULT)
+    ]);
   }
 
   function passwordValida($password) {

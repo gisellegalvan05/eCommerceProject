@@ -3,6 +3,8 @@
 <?php require 'includes/nav.php' ?>
 <?php
 
+require 'usuario.php';
+
   function redirect($url){
   header('location: ' . $url);
   }

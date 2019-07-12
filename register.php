@@ -3,6 +3,8 @@
 
 <?php require 'includes/nav.php';
 
+require 'usuario.php';
+
  $errors = [];
 
 if(!empty($_POST)){
@@ -40,7 +42,7 @@ if(!empty($_POST)){
     if($_POST['password'] != $_POST['passwordConfirm']){
          $errors['passwordConfirm'][] = 'Las contraseñas no coinciden' ;
       }
-
+/*
     if (!empty($_FILES["avatar"])) {
       $allowed =  ["gif", "png", "jpg", "jpeg"];
       $filename = $_FILES["avatar"]["name"];
@@ -55,7 +57,7 @@ if(!empty($_POST)){
       }
 
     }
-
+*/
 
     if(isset($_POST['sexo'])){
 
