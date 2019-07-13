@@ -1,17 +1,13 @@
-<?php session_start(); ?>
+<?php session_start();
 
-<?php require 'includes/nav.php' ?>
-<?php
-
-require 'usuario.php';
+require 'includes/nav.php';
+require 'src/Entities/usuario.php';
 
   function redirect($url){
   header('location: ' . $url);
   }
 
-$errors =[];
-
-  if (!empty($_POST)) {
+    if(!empty($_POST)){
 
       if (empty($_POST['email'])) {
         $errors['email'][]= "Ingrese su email";

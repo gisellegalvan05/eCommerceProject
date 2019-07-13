@@ -1,7 +1,5 @@
 <?php
-/**
- *
- */
+
 class Usuario {
 
   // atributos
@@ -34,8 +32,8 @@ class Usuario {
   }
 
   static public function buscar($email) {
-    $base = self::conectar();
 
+    $base = self::conectar();
     // buscar registro con email = $email
     $consulta = $base->prepare('select * from usuarios where email = :email');
     $consulta->execute([
@@ -66,8 +64,7 @@ class Usuario {
   function guardar() {
     $base = self::conectar();
     // preparar un insert de un registro
-    $consulta = $base->prepare('insert into usuarios (nombre, apellido, pais, sexo, email, password)
-                                values (:nombre, :apellido, :pais, :sexo, :email, :password)');
+    $consulta = $base->prepare('insert into usuarios (nombre, apellido, pais, sexo, email, password) values (:nombre, :apellido, :pais, :sexo, :email, :password)');
     // ejecutar con $usuarioNuevo
     $consulta->execute([
       "nombre"   => $this->nombre,

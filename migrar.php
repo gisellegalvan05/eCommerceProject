@@ -1,6 +1,6 @@
 <?php
 
-require 'usuario.php';
+require 'src/Entities/usuario.php';
 
 Usuario::crearTabla();
 

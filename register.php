@@ -1,99 +1,31 @@
-<?php session_start(); ?>
+<?php session_start();
 
-
-<?php require 'includes/nav.php';
-
-require 'usuario.php';
-
- $errors = [];
+require 'includes/nav.php';
+require 'src/Entities/usuario.php';
+require 'src/Validators/UsuarioValidador.php';
 
 if(!empty($_POST)){
 
-    if (Usuario::buscar($_POST['email']) != false) {
-      $errors['email'][] = 'El email ya está en uso';
+  $validator=new UsuarioValidador($_POST);
+  $validator->validate();
+
+  if(!empty($validator->isValid())){
+    $usuarioBD = new Usuario();
+
+    $usuarioBD->nombre   = $_POST['nombre'];
+    $usuarioBD->apellido = $_POST['apellido'];
+    $usuarioBD->pais     = $_POST['pais'];
+    $usuarioBD->sexo     = $_POST['sexo'];
+    $usuarioBD->email    = $_POST['email'];
+    $usuarioBD->password = $_POST['password'];
+
+    try {
+       $usuarioBD->guardar();
+   header('location: login.php');
+    } catch (\Exception $e) {
+      die($e->getMessage());
     }
-
-    if (empty($_POST['email'])) {
-     $errors['email'][] = "El campo email debe estar completo";
-      }
-
-    if (FILTER_VAR($_POST['email'], FILTER_VALIDATE_EMAIL) == FALSE) {
-       $errors['email'][] = "No es el formato correcto";
-    }
-
-    if (empty($_POST['nombre'])) {
-    $errors['nombre'][]="El nombre debe estar completo";
-    }
-
-    if (empty($_POST['apellido'])) {
-      $errors['apellido'][]= "El apellido debe estar completo";
-    }
-
-    if(empty($_POST['password'])){
-         $errors['password'][] = 'El campo contraseña está vacío';
-       }
-    if(empty($_POST['passwordConfirm'])){
-           $errors['paswword'][] = 'El campo de confirmación de contraseña está vacio';
-       }
-    if(strlen($_POST['password']) < 8){
-          $errors['password'][] = 'La contraseña debe tener al menos 8 caracteres';
-      }
-
-    if($_POST['password'] != $_POST['passwordConfirm']){
-         $errors['passwordConfirm'][] = 'Las contraseñas no coinciden' ;
-      }
-/*
-    if (!empty($_FILES["avatar"])) {
-      $allowed =  ["gif", "png", "jpg", "jpeg"];
-      $filename = $_FILES["avatar"]["name"];
-      $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-      if(!in_array($ext,$allowed) ) {
-        $errors['avatar'][]= 'Formatos válidos de imagen: .gif, .png, .jpg o .jpeg';
-      }
-
-      if($_FILES['avatar']['size']>3000000){
-        $errors['avatar'][]= 'Tamaño máximo permitido: 3MB';
-      }
-
-    }
-*/
-
-    if(isset($_POST['sexo'])){
-
-      if($_POST['sexo'] != 'fm' && $_POST['sexo'] != 'ms'){
-      $errors['sexo'][] = "La opción seleccionada es invalida";
-        }
-      }else {
-       $errors['sexo'][] = "Debe seleccionar una opción";
-      }
-
-
-
-    if(empty($_POST['terminos'])){
-      $errors['terminos'][] = "Debe aceptar los términos y condiciones";
-    }
-
-    //array_merge($_POST, [
-    //'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)]);
-
-    if (empty($errors)) {
-
-     $usuarioBD = new Usuario();
-
-     $usuarioBD->nombre   = $_POST['nombre'];
-     $usuarioBD->apellido = $_POST['apellido'];
-     $usuarioBD->pais     = $_POST['pais'];
-     $usuarioBD->sexo     = $_POST['sexo'];
-     $usuarioBD->email    = $_POST['email'];
-     $usuarioBD->password = $_POST['password'];
-
-     $usuarioBD->guardar();
-
-     header('location: login.php');
-
-    }
-
+  }
 }
 
 $paises = [
@@ -127,15 +59,21 @@ $paises = [
     <!-- FOMULARIO EMAIL -->
     <p class="form-row form-row-wide"> <label for="reg_email">Email&nbsp;<span class="required">*</span></label> <input type="email"
     class="input-text" name="email" id="reg_email" autocomplete="email" value="<?=$_POST['email'] ?? ''?>"></p>
-    <p class="alerta"><?= $errors['email'][0] ?? '' ?></p>
+    <p class="alerta"><?php if(isset($validator)) {
+          echo $validator->getError('email');
+        }?></p>
     <!-- FOMULARIO NOMBRE -->
     <p class="form-row form-row-wide"> <label for="reg_nombre">Nombre&nbsp;<span class="required">*</span></label> <input type="text"
     class="input-text" name="nombre" id="reg_nombre" autocomplete="nombre" value="<?=$_POST['nombre'] ?? ''?>"></p>
-    <p class="alerta"><?=$errors['nombre'][0] ?? ''?></p>
+    <p class="alerta"><?php if(isset($validator)) {
+        echo $validator->getError('nombre');
+      }?></p>
     <!-- FOMULARIO APELLIDO -->
     <p class="form-row form-row-wide"> <label for="reg_apellido">Apellido&nbsp;<span class="required">*</span></label> <input type="text"
     class="input-text" name="apellido" id="reg_apellido" autocomplete="apellido" value="<?=$_POST['apellido'] ?? ''?>"></p>
-    <p class="alerta"><?=$errors['apellido'][0] ?? ''?></p>
+    <p class="alerta"><?php if(isset($validator)) {
+        echo $validator->getError('apellido');
+      }?></p>
     <!-- FOMULARIO PAIS DE NACIMIENTO -->
     <p class="form-row form-row-wide">
     <label for="reg_pais">País de nacimiento&nbsp;<span class="required">*</span></label>
@@ -165,18 +103,22 @@ $paises = [
     <input type="radio" id="femenino" name="sexo" class="custom-control-input" value="fm">
     <label class="custom-control-label" for="femenino">Femenino</label>
               </div></p>
-              <p class="alerta"><?=$errors['sexo'][0] ?? ''?></p>
-
-
+              <p class="alerta"><?php if(isset($validator)) {
+          echo $validator->getError('sexo');
+        }?></p>
               <!-- FOMULARIO CONTRASEÑA -->
               <p class="form-row form-row-wide"> <label for="reg_password">Contraseña&nbsp;<span class="required">*</span></label> <input type="password"
                   class="input-text" name="password" id="reg_password" autocomplete="new-password"></p>
-                  <p class="alerta"><?=$errors['password'][0] ?? ''?></p>
+                  <p class="alerta"><?php if(isset($validator)) {
+            echo $validator->getError('password');
+          }?></p>
 
             <!-- FOMULARIO CONFIRMAR CONTRASEÑA -->
       <p class="form-row form-row-wide"><label for="reg_passwordConfirm">Confirmar Contraseña&nbsp;<span class="required">*</span></label><input type="password"
           class="input-text" name="passwordConfirm" id="reg_passwordConfirm" autocomplete="passwordConfirm"></p>
-          <p class="alerta"><?=$errors['passwordConfirm'][0] ?? ''?></p>
+          <p class="alerta"><?php if(isset($validator)) {
+        echo $validator->getError('passwordConfirm');
+      }?></p>
 
           <!-- FOMULARIO ACEPTO TERMINOS -->
           <label class="">
@@ -184,7 +126,9 @@ $paises = [
             <a href="terminos-condiciones.php" target="_new"
              > Ver términos y condiciones</a>
           </label>
-          <p class="alerta"><?= $errors['terminos'][0] ?? ''?></p>
+          <p class="alerta"><?php if(isset($validator)) {
+          echo $validator->getError('terminos');
+        }?></p>
 
 
           <div class="privacy-policy-text"></div>
