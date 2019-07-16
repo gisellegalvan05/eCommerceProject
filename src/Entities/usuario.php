@@ -1,5 +1,4 @@
 <?php
-
 class Usuario {
 
   // atributos
@@ -14,7 +13,7 @@ class Usuario {
   // metodos de clase
 
   // conectar a la base
-  static private function conectar() {
+static public function conectar() {
     return new PDO('mysql:dbname=ecommerce;host=127.0.0.1;port=3306', 'root', '');
   }
 
@@ -56,30 +55,40 @@ class Usuario {
       // si no se encontro nada, devolver false
       return false;
     }
-
   }
 
   // metodos de instancia
 
-  function guardar() {
-    $base = self::conectar();
+
+
     // preparar un insert de un registro
-    $consulta = $base->prepare('insert into usuarios (nombre, apellido, pais, sexo, email, password) values (:nombre, :apellido, :pais, :sexo, :email, :password)');
-    // ejecutar con $usuarioNuevo
-    $consulta->execute([
-      "nombre"   => $this->nombre,
-      "apellido" => $this->apellido,
-      "pais"     => $this->pais,
-      "sexo"     => $this->sexo,
-      "email"    => $this->email,
-      "password" => password_hash($this->password, PASSWORD_DEFAULT)
-    ]);
-  }
+    public function guardar(AlmacenamientoInterface $storage) {
 
-  function passwordValida($password) {
-    return password_verify($password, $this->password);
-  }
+    $storage->getSource();
 
-}
+    if($storage instanceof AlmacenamientoDB) {
+       $sql = 'INSERT INTO usuarios(nombre, apellido, pais, sexo, email, password) VALUES (:nombre, :apellido, :pais, :sexo, :email, :password)';
+
+       $storage->setQuery($sql);
+     }
+
+     $storage->insert([
+       "nombre"   => $this->nombre,
+       "apellido" => $this->apellido,
+       "pais"     => $this->pais,
+       "sexo"     => $this->sexo,
+       "email"    => $this->email,
+       "password" => password_hash($this->password, PASSWORD_DEFAULT),
+     ]);
+
+      return $storage->getId();
+    }
+
+   function passwordValida($password) {
+     return password_verify($password, $this->password);
+     }
+
+   }
+
 
 ?>

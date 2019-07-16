@@ -7,7 +7,9 @@ require 'src/Entities/usuario.php';
   header('location: ' . $url);
   }
 
-    if(!empty($_POST)){
+  $errors =[];
+
+  if (!empty($_POST)) {
 
       if (empty($_POST['email'])) {
         $errors['email'][]= "Ingrese su email";

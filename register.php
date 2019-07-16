@@ -3,28 +3,33 @@
 require 'includes/nav.php';
 require 'src/Entities/usuario.php';
 require 'src/Validators/UsuarioValidador.php';
+require 'AlmacenamientoInterface.php';
+require 'Factory.php';
 
-if(!empty($_POST)){
 
-  $validator=new UsuarioValidador($_POST);
-  $validator->validate();
+  $storage = Factory::get('storages', 'json');
 
-  if(!empty($validator->isValid())){
-    $usuarioBD = new Usuario();
+  if(!empty($_POST)){
 
-    $usuarioBD->nombre   = $_POST['nombre'];
-    $usuarioBD->apellido = $_POST['apellido'];
-    $usuarioBD->pais     = $_POST['pais'];
-    $usuarioBD->sexo     = $_POST['sexo'];
-    $usuarioBD->email    = $_POST['email'];
-    $usuarioBD->password = $_POST['password'];
+    $validator=new UsuarioValidador($_POST);
+    $validator->validate();
 
-    try {
-       $usuarioBD->guardar();
-   header('location: login.php');
-    } catch (\Exception $e) {
-      die($e->getMessage());
-    }
+    if(!empty($validator->isValid())){
+      $usuarioBD = new Usuario();
+
+      $usuarioBD->nombre   = $_POST['nombre'];
+      $usuarioBD->apellido = $_POST['apellido'];
+      $usuarioBD->pais     = $_POST['pais'];
+      $usuarioBD->sexo     = $_POST['sexo'];
+      $usuarioBD->email    = $_POST['email'];
+      $usuarioBD->password = $_POST['password'];
+
+      try {
+         $usuarioBD->guardar($storage);
+     header('location: login.php');
+      } catch (\Exception $e) {
+        die($e->getMessage());
+      }
   }
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-class UsuarioValidador {
+class UsuarioValidador{
   private $usuario;
   private $errors=[];
 

@@ -1,11 +1,10 @@
 [
     {
-        "email": "alanis.selene@hotmail.com",
         "nombre": "Alanis",
         "apellido": "Gomez",
         "pais": "ar",
         "sexo": "fm",
-        "password": "$2y$10$.Yd3Z2xlC\/vfVd5PoJufa.Y8QQAv7H7z\/GReq6rfbEN5.C62QFuzS",
-        "register": "Register"
+        "email": "alanis.gomez99@gmail.com",
+        "password": "$2y$10$U0mNBsOH2PhCY\/OexbbONOWhCuxPQOKKDGbUT7\/UlID47XtoRCHOu"
     }
 ]
